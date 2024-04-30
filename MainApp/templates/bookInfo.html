@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Information</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+</head>
+<body>
+    <h2 class="mb-3">Book Information</h2>
+    <div class="card mb-5" style="width: 18rem;">
+        <div class="card-header bg-primary text-white">
+          Detail Book
+        </div>
+        <ul class="list-group list-group-flush">
+            <li class="list-group-item"><strong>Judul : </strong>{{ catalogue_info['judul'] }}</li>
+            <li class="list-group-item"><strong>Author :</strong>{{ catalogue_info['author'] }}</li>
+            <li class="list-group-item"><strong>Genre : </strong>{{ catalogue_info['genre'] }}</li>
+            <li class="list-group-item"><strong>Tahun Terbit : </strong>{{ catalogue_info['year'] }}</li>
+            <li class="list-group-item"><strong>Stok : </strong>{{ catalogue_info['stock'] }}</li>
+            <li class="list-group-item"><strong>Sedang Dipinjam : </strong>{{ borrow_quantity }}</li>
+        </ul>
+    </div>
+    <div class="card mt-3" style="width: 18rem;">
+        <div class="card-header bg-primary text-white">
+          Book Review
+        </div>
+        <ul class="list-group list-group-flush">
+            {% for review in book_review %}
+            <li class="list-group-item">Review {{ loop.index }}: {{ review['review'] }}</li>
+            {% endfor %}
+        </ul>
+    </div>
+</body>
+</html>
