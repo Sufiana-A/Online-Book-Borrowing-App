@@ -1,6 +1,5 @@
 # 📚 Online Book Borrowing App
 
----
 
 [![Python](https://img.shields.io/badge/language-Python-blue.svg?logo=python\&logoColor=white)]()
 [![Flask](https://img.shields.io/badge/framework-Flask-black.svg?logo=flask\&logoColor=white)]()
