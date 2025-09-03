@@ -72,19 +72,19 @@ Masing-masing service menggunakan stack & database berbeda, lalu diintegrasikan 
 
 ### Prerequisites
 
-* **Languages & Frameworks**
+- **Languages & Frameworks**
 
   * Python 3.8+ + Flask
   * Node.js + Express.js
   * PHP + Lumen
 
-* **Databases**
+- **Databases**
 
   * MongoDB Cloud (Catalogue, Notification)
   * MySQL (Borrow)
   * SQLite (Review)
 
-* **Tools**
+- **Tools**
 
   * pip / virtualenv
   * npm
@@ -92,26 +92,26 @@ Masing-masing service menggunakan stack & database berbeda, lalu diintegrasikan 
 
 ### Installation
 
-* Clone repo:
+- Clone repo:
 
   ```bash
-  git clone https://github.com/Sufiana-A/online-book-borrowing-app.git
-  cd online-book-borrowing-app
+  git clone https://github.com//Sufiana-A/Online-Book-Borrowing-App.git
+  cd Online-Book-Borrowing-App
   ```
 
-* Flask service (Review, MainApp):
+- Flask service (Review, MainApp):
 
   ```bash
   pip install flask requests sqlite3
   ```
 
-* Express.js services (KatalogBuku, NotificationApp):
+- Express.js services (KatalogBuku, NotificationApp):
 
   ```bash
   npm install express mongoose
   ```
 
-* Lumen service (BorrowApp):
+- Lumen service (BorrowApp):
 
   ```bash
   composer install
@@ -152,25 +152,25 @@ Akses integrasi via browser:
 
 ## API Endpoints
 
-* **Book Catalogue (5001)**
+- **Book Catalogue (5001)**
 
   * `GET /catalogues/{bookId}` – detail buku
 
-* **Borrow (5002)**
+- **Borrow (5002)**
 
   * `POST /borrow-book/{userId}/{bookId}` – pinjam buku
   * `GET /borrow/quantity/{bookId}` – total qty dipinjam
   * `GET /borrow/quantity/user/{userId}` – pinjaman user
 
-* **Review (5003)**
+- **Review (5003)**
 
   * `GET /reviews/{bookId}` – ulasan buku
 
-* **Notification (5004)**
+- **Notification (5004)**
 
   * `GET /notifications/{userId}` – notifikasi user
 
-* **MainApp Gateway (5006)**
+- **MainApp Gateway (5006)**
 
   * `GET /bookInformation/{bookId}` – gabungkan katalog, qty, review
   * `GET /userInformation/{userId}` – gabungkan pinjaman & notifikasi
