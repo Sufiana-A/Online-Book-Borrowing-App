@@ -25,7 +25,7 @@
 **Online Book Borrowing App** adalah proyek belajar dengan arsitektur **microservices**.
 Aplikasi ini menyediakan layanan katalog buku, peminjaman, ulasan, dan notifikasi.
 
-> ⚠️ Saat ini aplikasi **belum menggunakan database**, seluruh data masih berupa array/list yang ditulis langsung di dalam kode. Database (MongoDB, MySQL, SQLite) direncanakan untuk implementasi berikutnya.
+> Saat ini aplikasi **belum menggunakan database**, seluruh data masih berupa array/list yang ditulis langsung di dalam kode. Database (MongoDB, MySQL, SQLite) direncanakan untuk implementasi berikutnya.
 
 ### Features
 
