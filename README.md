@@ -1,26 +1,22 @@
 # 📚 Online Book Borrowing App
 
-
 [![Python](https://img.shields.io/badge/language-Python-blue.svg?logo=python\&logoColor=white)]()
 [![Flask](https://img.shields.io/badge/framework-Flask-black.svg?logo=flask\&logoColor=white)]()
 [![Express](https://img.shields.io/badge/framework-Express.js-000000.svg?logo=express\&logoColor=white)]()
 [![PHP](https://img.shields.io/badge/language-PHP-777BB4.svg?logo=php\&logoColor=white)]()
 [![Lumen](https://img.shields.io/badge/framework-Lumen-E74430.svg?logo=laravel\&logoColor=white)]()
-[![MongoDB](https://img.shields.io/badge/database-MongoDB_Cloud-47A248.svg?logo=mongodb\&logoColor=white)]()
-[![MySQL](https://img.shields.io/badge/database-MySQL-4479A1.svg?logo=mysql\&logoColor=white)]()
-[![SQLite](https://img.shields.io/badge/database-SQLite-003B57.svg?logo=sqlite\&logoColor=white)]()
 
 ---
 
 ## Table of Contents
 
-- [Overview](#overview)
-- [Architecture](#architecture)
-- [Getting Started](#getting-started)
-  - [Prerequisites](#prerequisites)
-  - [Installation](#installation)
-- [Usage](#usage)
-- [API Endpoints](#api-endpoints)
+* [Overview](#overview)
+* [Architecture](#architecture)
+* [Getting Started](#getting-started)
+  * [Prerequisites](#prerequisites)
+  * [Installation](#installation)
+* [Usage](#usage)
+* [API Endpoints](#api-endpoints)
 
 ---
 
@@ -28,18 +24,19 @@
 
 **Online Book Borrowing App** adalah proyek belajar dengan arsitektur **microservices**.
 Aplikasi ini menyediakan layanan katalog buku, peminjaman, ulasan, dan notifikasi.
-Masing-masing service menggunakan stack & database berbeda, lalu diintegrasikan via **API Gateway (MainApp)** berbasis Flask.
+
+> ⚠️ Saat ini aplikasi **belum menggunakan database**, seluruh data masih berupa array/list yang ditulis langsung di dalam kode. Database (MongoDB, MySQL, SQLite) direncanakan untuk implementasi berikutnya.
 
 ### Features
 
-- **📚 Book Catalogue** – lihat detail buku (judul, penulis, genre, stok, tahun).
-- **📖 Borrow Service** – pinjam buku & cek jumlah peminjaman.
-- **⭐ Review Service** – tampilkan ulasan pengguna.
-- **🔔 Notification Service** – pengingat pengembalian untuk user.
+* **📚 Book Catalogue** – lihat detail buku (judul, penulis, genre, stok, tahun).
+* **📖 Borrow Service** – pinjam buku & cek jumlah peminjaman.
+* **⭐ Review Service** – tampilkan ulasan pengguna.
+* **🔔 Notification Service** – pengingat pengembalian untuk user.
 
 ---
 
-## Architecture
+### Architecture
 
 ```
  ┌───────────────────────┐       ┌────────────────────────────┐
@@ -72,50 +69,41 @@ Masing-masing service menggunakan stack & database berbeda, lalu diintegrasikan 
 
 ### Prerequisites
 
-- **Languages & Frameworks**
+* **Languages & Frameworks**
 
   * Python 3.8+ + Flask
   * Node.js + Express.js
   * PHP + Lumen
 
-- **Databases**
-
-  * MongoDB Cloud (Catalogue, Notification)
-  * MySQL (Borrow)
-  * SQLite (Review)
-
-- **Tools**
+* **Tools**
 
   * pip / virtualenv
   * npm
   * Composer
 
+> Tidak ada database yang perlu di-setup karena data masih hardcoded.
+
 ### Installation
 
-- Clone repo:
+Clone repo:
 
-  ```bash
-  git clone https://github.com//Sufiana-A/Online-Book-Borrowing-App.git
-  cd Online-Book-Borrowing-App
-  ```
+```bash
+git clone https://github.com/Sufiana-A/Online-Book-Borrowing-App.git
+cd Online-Book-Borrowing-App
+```
 
-- Flask service (Review, MainApp):
+Install dependencies:
 
-  ```bash
-  pip install flask requests sqlite3
-  ```
+```bash
+# Flask services (Review, MainApp)
+pip install flask requests
 
-- Express.js services (KatalogBuku, NotificationApp):
+# Express.js services (Catalogue, Notification)
+npm install express
 
-  ```bash
-  npm install express mongoose
-  ```
-
-- Lumen service (BorrowApp):
-
-  ```bash
-  composer install
-  ```
+# Lumen service (BorrowApp)
+composer install
+```
 
 ---
 
@@ -124,19 +112,19 @@ Masing-masing service menggunakan stack & database berbeda, lalu diintegrasikan 
 Jalankan tiap service sesuai folder & port:
 
 ```bash
-# Book Catalogue Service (Express.js + MongoDB, port 5001)
+# Book Catalogue Service (Express.js, port 5001)
 cd KatalogBuku
 node app.js
 
-# Borrow Service (Lumen + MySQL, port 5002)
+# Borrow Service (Lumen, port 5002)
 cd BorrowApp
 php -S localhost:5002 -t public
 
-# Review Service (Flask + SQLite, port 5003)
+# Review Service (Flask, port 5003)
 cd ReviewApp
 python reviews.py
 
-# Notification Service (Express.js + MongoDB, port 5004)
+# Notification Service (Express.js, port 5004)
 cd NotificationApp
 node app.js
 
@@ -152,25 +140,25 @@ Akses integrasi via browser:
 
 ## API Endpoints
 
-- **Book Catalogue (5001)**
+* **Book Catalogue (5001)**
 
   * `GET /catalogues/{bookId}` – detail buku
 
-- **Borrow (5002)**
+* **Borrow (5002)**
 
   * `POST /borrow-book/{userId}/{bookId}` – pinjam buku
   * `GET /borrow/quantity/{bookId}` – total qty dipinjam
   * `GET /borrow/quantity/user/{userId}` – pinjaman user
 
-- **Review (5003)**
+* **Review (5003)**
 
   * `GET /reviews/{bookId}` – ulasan buku
 
-- **Notification (5004)**
+* **Notification (5004)**
 
   * `GET /notifications/{userId}` – notifikasi user
 
-- **MainApp Gateway (5006)**
+* **MainApp Gateway (5006)**
 
   * `GET /bookInformation/{bookId}` – gabungkan katalog, qty, review
   * `GET /userInformation/{userId}` – gabungkan pinjaman & notifikasi
